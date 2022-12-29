@@ -1,16 +1,9 @@
-# This is a sample Python script.
+import qrcode
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+input_data = input("Enter the string that want to make its qr code : ")
+name = input("Enter the name of the file : ")
+qr = qrcode.QRCode(version=1, box_size=10, border=5)
+qr.add_data(input_data)
+qr.make(fit=True)
+img = qr.make_image(fill='red', back_color='red')
+img.save(name + '.png')
